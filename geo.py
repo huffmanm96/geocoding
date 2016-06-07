@@ -23,6 +23,8 @@ for key in dict:
     for each_key in dict:
         if each_key != current:
             if each_key in range((key-0.0005),(key+0.0005)) and dict[each_key] in range((dict[key]-0.0005),(dict[key]+0.0005)):
+            #if each_key >=((key-0.0005) and each_key <= (key+0.0005)) and dict[each_key] >= dict[key]-0.0005 and dict[each_key] <= dict[key]+0.0005:
+
                 new_dict[each_key] = dict[each_key]
             else: 
                 pass
