@@ -1,3 +1,7 @@
+http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude
+
+"...one degree of latitude covers about 10^7/90 = 111,111 meters."
+
 http://gis.stackexchange.com/questions/142326/calculate-longitude-length-in-miles
 
 Calculate the distance between two coordinates by latitude and longitude, including a Javascript implementation.
