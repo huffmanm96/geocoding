@@ -1,1 +1,24 @@
 http://gis.stackexchange.com/questions/142326/calculate-longitude-length-in-miles
+
+Calculate the distance between two coordinates by latitude and longitude, including a Javascript implementation.
+
+West and South locations are negative. Remember minutes and seconds are out of 60 so S31 30' is -31.50 degrees.
+
+Don't forget to convert degrees to radians. Many languages have this function. Or its a simple calculation:
+
+
+'''
+This is in Javascript, but this can be easily translated to Python.
+'''
+
+radians = degrees * PI / 180
+var R = 6371; // km
+var dLat = (lat2-lat1).toRad();
+var dLon = (lon2-lon1).toRad();
+var lat1 = lat1.toRad();
+var lat2 = lat2.toRad();
+
+var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+var d = R * c;
