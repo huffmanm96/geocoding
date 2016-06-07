@@ -9,6 +9,7 @@ lines = []
 for line in d:
     lines.append(line)
 dict = {}
-for item in lines:
-    dict[item[0]] = item[1]
+for item in lines[1:]:
+    dict[float(item[0])] = float(item[1])
 print (dict)
+data.close()
