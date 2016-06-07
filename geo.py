@@ -4,3 +4,11 @@
 import csv
 data = open('New_Geocodes.csv','r')
 d = csv.reader(data)
+
+lines = []
+for line in d:
+    lines.append(line)
+dict = {}
+for item in lines:
+    dict[item[0]] = item[1]
+print (dict)
