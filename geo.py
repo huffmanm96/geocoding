@@ -17,6 +17,7 @@ for item in lines[1:]:
 data.close()
 
 vals = {}
+counter = 1
 for key in dict:
     current = key
     new_dict = {}
@@ -29,6 +30,6 @@ for key in dict:
         else:
             pass
     vals[(key, dict[key])] = new_dict
-    print ("One down.")
+    print (str(counter)+" down.")
+    counter +=1
 print (vals)
-
