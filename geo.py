@@ -5,32 +5,50 @@
 import csv
 import pickle
 
-data = open('New_Geocodes.csv','r')
-d = csv.reader(data)
+sm_data = open('GeoCodes_1.csv','r')
+sm_d = csv.reader(sm_data)
 
 lines = []
-for line in d:
+for line in sm_d:
     lines.append(line)
-data.close()
-dict = {}
+sm_data.close()
+sm_list = []
 for item in lines[1:]:
-    dict[float(item[0])] = float(item[1])
-data.close()
+    sm_list.append( (float(item[0]), float(item[1])) )
+
+lg_data = open('GeoCodes.csv','r')
+lg_d = csv.reader(lg_data)
+
+rows = []
+for row in lg_d:
+    rows.append(row)
+lg_data.close()
+clean = rows[1:]
+lg_list = []
+for thing in clean:
+    lg_list.append( (float(thing[0]), float(thing[1])) )
+
+
 
 vals = {}
 counter = 1
-for key in dict:
-    current = key
-    new_dict = {}
-    for each_key in dict:
-        if each_key != current:
-            if (each_key>(key-0.00049) and each_key<(key+0.00049))==True and (dict[each_key]>(dict[key]-0.00049) and dict[each_key]<(dict[key]+0.00049))==True:
-                new_dict[each_key] = dict[each_key]
+for s_tup in sm_list:
+    current = s_tup
+    (s_lat, s_long) = s_tup
+    new_list = []
+    for l_tup in lg_list:
+        (l_lat, l_long) = l_tup
+        if l_tup != current:
+            if (l_lat>(s_lat-0.00049) and l_lat<(s_lat+0.00049))==True and (l_long>(s_long-0.00049) and l_long<(s_long+0.00049))==True:
+                new_list.append( (l_lat, l_long) )
             else: 
                 pass
         else:
             pass
-    vals[(key, dict[key])] = new_dict
+    if s_tup in vals.keys():
+        vals[s_tup].extend(new_list)
+    else:
+        vals[s_tup] = new_list
     print (str(counter)+" down.")
     counter +=1
 print (vals)
